@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
 	def show
 		@article = Article.find(params[:id])
 		@comments = @article.comments
-		@comment = Comment.new
+		@new_comment = current_user.comments.new
 	end
 
 	def update

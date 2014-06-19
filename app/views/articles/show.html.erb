@@ -3,24 +3,29 @@
 <h1><%= @article.title  %></h1>
 <h3><%= @article.body %></h3>
 <h1>Figure out a way to show the author of this article</h1>
-
-<%= form_for @comment do |c| %>
-
-	<%= c.label :body %>
-	<%= c.text_field :body %>
-	
-	<%= c.hidden_field :user_id, :value => current_user.id %>
+<% if user_signed_in? %>
+	<%= form_for @new_comment do |c| %>
+			<%= c.label :body  %>
+			<%= c.text_field :body  %>
 			<%= c.hidden_field :article_id, :value => @article.id %>
+			<% c.submit %>
+	<% end %>
 
-	<% c.submit %>
+<% else %>
+
+<p>To commment, please <%= link_to "Sign In", new_user_registration_path %></p>	
 
 <% end %>
 
 <% if @comments.empty? %>
- 	<p>There are no comments</p>
+		<p>no commments</p>
 <% else %>
-	<% @comments.each do |comment| %>
-		<%= comment.body  %>
+		<% @comments.each do |comment|  %>
+			<%= comment.user.user_name  %>
+			<%= comment.body %>
 	<% end %>
 <% end %>
+
+
+
 
