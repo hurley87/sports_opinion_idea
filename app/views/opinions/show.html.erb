@@ -19,13 +19,13 @@
 
 <% end %>
 
-<% unless @comments.empty? %>
-<% @comments.each do |comment|  %>
-	<%= comment.user.user_name  %>
-	<%= comment.body %>
-<% end %>
+<% if @comments.empty? %>
+	<p>no commments</p>
 <% else %>
-<p>no commments</p>
+		<% @comments.each do |comment|  %>
+			<%= comment.user.user_name  %>
+			<%= comment.body %>
+	<% end %>
 <% end %>
 
 
