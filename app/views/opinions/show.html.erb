@@ -1,0 +1,28 @@
+<%= link_to "Back", opinions_path  %>
+<%= @opinion.title  %>
+<%= @opinion.body  %>
+
+
+<% if user_signed_in? %>
+	<%= form_for @comment do |c| %>
+			<%= c.label :body  %>
+			<%= c.text_field :body  %>
+			<%= c.hidden_field :user_id, :value => current_user.id %>
+			<%= c.hidden_field :opinion_id, :value => @opinion.id %>
+			<% c.submit %>
+	<% end %>
+<% else %>
+<p>To commment, please <%= link_to "Sign In", new_user_registration_path %></p>	
+<% end %>
+
+<% unless @comments.empty? %>
+<% @comments.each do |comment|  %>
+	<%= comment.user.user_name  %>
+	<%= comment.body %>
+<% end %>
+<% else %>
+<p>no commments</p>
+<% end %>
+
+
+

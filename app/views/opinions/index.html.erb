@@ -1,0 +1,4 @@
+<h1>Opinions</h1>
+<% @opinions.each do |opinion|  %>
+	<%= link_to "#{opinion.id}", opinion_path(opinion.id) %>
+<% end %>
