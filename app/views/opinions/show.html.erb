@@ -1,7 +1,7 @@
 <%= link_to "Back", opinions_path  %>
 <%= @opinion.title  %>
 <%= @opinion.body  %>
-
+<%= @opinion.user.user_name %>
 
 
 <% if user_signed_in? %>
