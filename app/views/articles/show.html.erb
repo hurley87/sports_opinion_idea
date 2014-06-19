@@ -1,0 +1,8 @@
+<p><%= link_to "Back", articles_path %> | <% link_to "Edit", edit_article_path %></p>
+
+<h1><%= @article.title  %></h1>
+<h3><%= @article.body %></h3>
+<h1>Figure out a way to show the author of this article</h1>
+
+<% @comments.each do |comment| %>
+<% end %>

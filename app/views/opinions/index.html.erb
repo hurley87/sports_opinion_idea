@@ -1,5 +1,5 @@
 <h1>Opinions</h1>
-<%= link_to "New", new_opinion_path %>
-<% @opinions.each do |opinion|  %>
+	<%= link_to "New", new_opinion_path %>
+		<% @opinions.each do |opinion|  %>
 	<%= link_to "#{opinion.title}", opinion_path(opinion.id) %>
 <% end %>
