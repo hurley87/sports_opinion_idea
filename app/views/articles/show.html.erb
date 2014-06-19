@@ -4,5 +4,23 @@
 <h3><%= @article.body %></h3>
 <h1>Figure out a way to show the author of this article</h1>
 
-<% @comments.each do |comment| %>
+<%= form_for @comment do |c| %>
+
+	<%= c.label :body %>
+	<%= c.text_field :body %>
+	
+	<%= c.hidden_field :user_id, :value => current_user.id %>
+			<%= c.hidden_field :article_id, :value => @article.id %>
+
+	<% c.submit %>
+
 <% end %>
+
+<% if @comments.empty? %>
+ 	<p>There are no comments</p>
+<% else %>
+	<% @comments.each do |comment| %>
+		<%= comment.body  %>
+	<% end %>
+<% end %>
+
