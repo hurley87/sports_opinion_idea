@@ -1,7 +1,11 @@
 class CommentsController < ApplicationController
 	def create
 		@comment = current_user.comments.create(comment_params)
-		redirect_to article_path(@comment.article)
+		if @comment.article_id?
+			redirect_to article_path(@comment.article_id)
+		else
+			redirect_to opinion_path(@comment.opinion_id)
+		end
 	end
 
 	private
